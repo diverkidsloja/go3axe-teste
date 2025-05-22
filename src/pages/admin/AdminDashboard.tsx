@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { DollarSign, Users, CreditCard, Calendar, Clock } from 'lucide-react';
+import { DollarSign, Users, CreditCard, Calendar, Clock, UserPlus } from 'lucide-react';
 import Header from '../../components/Header';
 import PageTitle from '../../components/PageTitle';
 import StatCard from '../../components/StatCard';
@@ -8,6 +8,7 @@ import TransactionList from '../../components/TransactionList';
 import DashboardCalendar from '../../components/DashboardCalendar';
 import { useData } from '../../contexts/DataContext';
 import { formatCurrency } from '../../utils/format';
+import { Link } from 'react-router-dom';
 
 const AdminDashboard: React.FC = () => {
   const { partners, getDashboardData, getTransactions } = useData();
@@ -83,10 +84,10 @@ const AdminDashboard: React.FC = () => {
                 <span className="mt-2 text-sm font-medium">Nova Cobrança</span>
               </button>
               
-              <button className="p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors flex flex-col items-center justify-center text-go3-primary">
-                <Calendar size={24} />
-                <span className="mt-2 text-sm font-medium">Link de Pagamento</span>
-              </button>
+              <Link to="/admin/subconta" className="p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors flex flex-col items-center justify-center text-go3-primary">
+                <UserPlus size={24} />
+                <span className="mt-2 text-sm font-medium">Subconta Asaas</span>
+              </Link>
             </div>
           </div>
           

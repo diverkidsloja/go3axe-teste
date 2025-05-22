@@ -13,6 +13,7 @@ import AdminDashboard from "./pages/admin/AdminDashboard";
 import PartnersManagement from "./pages/admin/PartnersManagement";
 import PartnerDashboard from "./pages/partner/PartnerDashboard";
 import NewCharge from "./pages/partner/NewCharge";
+import SubcontaAsaas from "./pages/admin/SubcontaAsaas";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -65,6 +66,12 @@ const App = () => (
               <Route path="/admin/partners" element={
                 <ProtectedRoute allowedRoles={['admin']}>
                   <PartnersManagement />
+                </ProtectedRoute>
+              } />
+              
+              <Route path="/admin/subconta" element={
+                <ProtectedRoute allowedRoles={['admin']}>
+                  <SubcontaAsaas />
                 </ProtectedRoute>
               } />
               
