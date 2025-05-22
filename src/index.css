@@ -1,3 +1,38 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+@font-face {
+  font-family: 'Oceanshore';
+  src: url('/fonts/Oceanshore.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'TT Norms';
+  src: url('/fonts/TTNorms-Regular.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'TT Norms';
+  src: url('/fonts/TTNorms-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'TT Norms';
+  src: url('/fonts/TTNorms-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -33,22 +68,6 @@
     --ring: 222.2 84% 4.9%;
 
     --radius: 0.5rem;
-
-    --sidebar-background: 0 0% 98%;
-
-    --sidebar-foreground: 240 5.3% 26.1%;
-
-    --sidebar-primary: 240 5.9% 10%;
-
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
   }
 
   .dark {
@@ -79,14 +98,6 @@
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
     --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
   }
 }
 
@@ -96,6 +107,89 @@
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-go3-light text-go3-dark font-sans;
+    font-family: 'TT Norms', system-ui, sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Oceanshore', serif;
+  }
+}
+
+@layer components {
+  .go3-card {
+    @apply bg-white rounded-xl shadow-md p-6 transition-all duration-300 hover:shadow-lg;
+  }
+
+  .go3-btn-primary {
+    @apply bg-go3-primary text-white hover:bg-opacity-90 rounded-lg px-4 py-2 transition-all duration-200;
+  }
+
+  .go3-btn-accent {
+    @apply bg-go3-accent text-go3-primary hover:bg-opacity-90 rounded-lg px-4 py-2 transition-all duration-200 font-medium;
+  }
+
+  .go3-input {
+    @apply rounded-lg border border-gray-300 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-go3-accent focus:border-transparent transition-all duration-200;
+  }
+
+  .go3-link {
+    @apply text-go3-primary hover:text-go3-accent transition-all duration-200;
+  }
+
+  .go3-title {
+    @apply text-go3-primary text-2xl md:text-3xl font-bold;
+  }
+
+  .go3-subtitle {
+    @apply text-go3-muted text-lg md:text-xl;
+  }
+
+  .go3-card-stat {
+    @apply flex flex-col p-6 rounded-xl shadow-md bg-white transition-all duration-200 hover:shadow-lg;
+  }
+
+  .go3-card-accent {
+    @apply border-l-4 border-go3-accent;
+  }
+
+  .go3-table {
+    @apply min-w-full divide-y divide-gray-200;
+  }
+
+  .go3-table th {
+    @apply px-6 py-3 text-left text-xs font-medium text-go3-muted uppercase tracking-wider;
+  }
+
+  .go3-table td {
+    @apply px-6 py-4 whitespace-nowrap;
+  }
+
+  .go3-table tr:nth-child(even) {
+    @apply bg-gray-50;
+  }
+
+  .go3-badge {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+  }
+
+  .go3-badge-success {
+    @apply bg-green-100 text-green-800;
+  }
+
+  .go3-badge-warning {
+    @apply bg-yellow-100 text-yellow-800;
+  }
+
+  .go3-badge-error {
+    @apply bg-red-100 text-red-800;
+  }
+
+  .go3-badge-info {
+    @apply bg-blue-100 text-blue-800;
+  }
+
+  .go3-badge-default {
+    @apply bg-gray-100 text-gray-800;
   }
 }
