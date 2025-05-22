@@ -1,14 +1,14 @@
 
 import React from 'react';
-import { DollarSign, Users, CreditCard, Calendar, Clock, UserPlus } from 'lucide-react';
+import { DollarSign, Users, CreditCard, Calendar, Clock, UserPlus, FileText, Link } from 'lucide-react';
 import Header from '../../components/Header';
 import PageTitle from '../../components/PageTitle';
 import StatCard from '../../components/StatCard';
 import TransactionList from '../../components/TransactionList';
 import DashboardCalendar from '../../components/DashboardCalendar';
+import ActionButton from '../../components/ActionButton';
 import { useData } from '../../contexts/DataContext';
 import { formatCurrency } from '../../utils/format';
-import { Link } from 'react-router-dom';
 
 const AdminDashboard: React.FC = () => {
   const { partners, getDashboardData, getTransactions } = useData();
@@ -72,27 +72,48 @@ const AdminDashboard: React.FC = () => {
         
         <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-8">
           <div className="bg-white rounded-lg shadow-sm p-6">
-            <h3 className="text-lg font-medium mb-4">Ações Rápidas</h3>
+            <h3 className="text-lg font-medium mb-4 font-oceanshore text-go3-primary">Ações Rápidas</h3>
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
-              <button className="p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors flex flex-col items-center justify-center text-go3-primary">
-                <DollarSign size={24} />
-                <span className="mt-2 text-sm font-medium">Extrato</span>
-              </button>
+              <ActionButton
+                icon={DollarSign}
+                label="Extrato"
+                to="/admin/extract"
+              />
               
-              <button className="p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors flex flex-col items-center justify-center text-go3-primary">
-                <CreditCard size={24} />
-                <span className="mt-2 text-sm font-medium">Nova Cobrança</span>
-              </button>
+              <ActionButton
+                icon={FileText}
+                label="Nova Cobrança"
+                to="/admin/extract"
+              />
               
-              <Link to="/admin/subconta" className="p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors flex flex-col items-center justify-center text-go3-primary">
-                <UserPlus size={24} />
-                <span className="mt-2 text-sm font-medium">Subconta Asaas</span>
-              </Link>
+              <ActionButton
+                icon={UserPlus}
+                label="Subconta Asaas"
+                to="/admin/subconta"
+              />
+
+              <ActionButton
+                icon={CreditCard}
+                label="Transações"
+                to="/admin/transactions"
+              />
+
+              <ActionButton
+                icon={Link}
+                label="Criar Link"
+                to="/admin/payment-links"
+              />
+
+              <ActionButton
+                icon={DollarSign}
+                label="Transferência"
+                to="/admin/transfer"
+              />
             </div>
           </div>
           
           <div className="bg-white rounded-lg shadow-sm p-6">
-            <h3 className="text-lg font-medium mb-4">Status dos Parceiros</h3>
+            <h3 className="text-lg font-medium mb-4 font-oceanshore text-go3-primary">Status dos Parceiros</h3>
             <div className="space-y-4">
               {partners.slice(0, 3).map((partner) => (
                 <div key={partner.id} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">

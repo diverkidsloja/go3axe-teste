@@ -1,11 +1,12 @@
 
 import React from 'react';
-import { DollarSign, CheckCircle, AlertCircle, Clock, CreditCard, Banknote } from 'lucide-react';
+import { DollarSign, CheckCircle, AlertCircle, Clock, CreditCard, Banknote, FileText, Link as LinkIcon } from 'lucide-react';
 import Header from '../../components/Header';
 import PageTitle from '../../components/PageTitle';
 import StatCard from '../../components/StatCard';
 import TransactionList from '../../components/TransactionList';
 import DashboardCalendar from '../../components/DashboardCalendar';
+import ActionButton from '../../components/ActionButton';
 import { useAuth } from '../../contexts/AuthContext';
 import { useData } from '../../contexts/DataContext';
 import { formatCurrency } from '../../utils/format';
@@ -72,37 +73,43 @@ const PartnerDashboard: React.FC = () => {
         
         <div className="mt-8">
           <div className="bg-white rounded-lg shadow-sm p-6">
-            <h3 className="text-lg font-medium mb-4">Ações Rápidas</h3>
+            <h3 className="text-lg font-medium mb-4 font-oceanshore text-go3-primary">Ações Rápidas</h3>
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4">
-              <button className="p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors flex flex-col items-center justify-center text-go3-primary">
-                <DollarSign size={24} />
-                <span className="mt-2 text-sm font-medium">Meu Extrato</span>
-              </button>
+              <ActionButton
+                icon={DollarSign}
+                label="Meu Extrato"
+                to="/partner/extract"
+              />
               
-              <button className="p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors flex flex-col items-center justify-center text-go3-primary">
-                <CreditCard size={24} />
-                <span className="mt-2 text-sm font-medium">Nova Cobrança</span>
-              </button>
+              <ActionButton
+                icon={FileText}
+                label="Nova Cobrança"
+                to="/partner/new-charge"
+              />
               
-              <button className="p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors flex flex-col items-center justify-center text-go3-primary">
-                <Banknote size={24} />
-                <span className="mt-2 text-sm font-medium">Minhas Transações</span>
-              </button>
+              <ActionButton
+                icon={CreditCard}
+                label="Minhas Transações"
+                to="/partner/transactions"
+              />
               
-              <button className="p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors flex flex-col items-center justify-center text-go3-primary">
-                <CreditCard size={24} />
-                <span className="mt-2 text-sm font-medium">Criar Link</span>
-              </button>
+              <ActionButton
+                icon={LinkIcon}
+                label="Criar Link"
+                to="/partner/payment-links"
+              />
               
-              <button className="p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors flex flex-col items-center justify-center text-go3-primary">
-                <Banknote size={24} />
-                <span className="mt-2 text-sm font-medium">Emitir Boleto</span>
-              </button>
+              <ActionButton
+                icon={Banknote}
+                label="Emitir Boleto"
+                to="/partner/new-charge?forma=boleto"
+              />
               
-              <button className="p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors flex flex-col items-center justify-center text-go3-primary">
-                <DollarSign size={24} />
-                <span className="mt-2 text-sm font-medium">Transferência</span>
-              </button>
+              <ActionButton
+                icon={DollarSign}
+                label="Transferência"
+                to="/partner/transfer"
+              />
             </div>
           </div>
         </div>

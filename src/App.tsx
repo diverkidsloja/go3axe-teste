@@ -16,6 +16,16 @@ import NewCharge from "./pages/partner/NewCharge";
 import SubcontaAsaas from "./pages/admin/SubcontaAsaas";
 import NotFound from "./pages/NotFound";
 
+// New Pages
+import AdminExtract from "./pages/admin/AdminExtract";
+import PartnerExtract from "./pages/partner/PartnerExtract";
+import AdminTransactions from "./pages/admin/AdminTransactions";
+import PartnerTransactions from "./pages/partner/PartnerTransactions";
+import AdminPaymentLinks from "./pages/admin/AdminPaymentLinks";
+import PartnerPaymentLinks from "./pages/partner/PartnerPaymentLinks";
+import AdminTransfer from "./pages/admin/AdminTransfer";
+import PartnerTransfer from "./pages/partner/PartnerTransfer";
+
 const queryClient = new QueryClient();
 
 // Protected route component
@@ -74,6 +84,30 @@ const App = () => (
                   <SubcontaAsaas />
                 </ProtectedRoute>
               } />
+
+              <Route path="/admin/extract" element={
+                <ProtectedRoute allowedRoles={['admin']}>
+                  <AdminExtract />
+                </ProtectedRoute>
+              } />
+
+              <Route path="/admin/transactions" element={
+                <ProtectedRoute allowedRoles={['admin']}>
+                  <AdminTransactions />
+                </ProtectedRoute>
+              } />
+
+              <Route path="/admin/payment-links" element={
+                <ProtectedRoute allowedRoles={['admin']}>
+                  <AdminPaymentLinks />
+                </ProtectedRoute>
+              } />
+
+              <Route path="/admin/transfer" element={
+                <ProtectedRoute allowedRoles={['admin']}>
+                  <AdminTransfer />
+                </ProtectedRoute>
+              } />
               
               {/* Partner Routes */}
               <Route path="/partner/dashboard" element={
@@ -85,6 +119,30 @@ const App = () => (
               <Route path="/partner/new-charge" element={
                 <ProtectedRoute allowedRoles={['partner']}>
                   <NewCharge />
+                </ProtectedRoute>
+              } />
+
+              <Route path="/partner/extract" element={
+                <ProtectedRoute allowedRoles={['partner']}>
+                  <PartnerExtract />
+                </ProtectedRoute>
+              } />
+
+              <Route path="/partner/transactions" element={
+                <ProtectedRoute allowedRoles={['partner']}>
+                  <PartnerTransactions />
+                </ProtectedRoute>
+              } />
+
+              <Route path="/partner/payment-links" element={
+                <ProtectedRoute allowedRoles={['partner']}>
+                  <PartnerPaymentLinks />
+                </ProtectedRoute>
+              } />
+
+              <Route path="/partner/transfer" element={
+                <ProtectedRoute allowedRoles={['partner']}>
+                  <PartnerTransfer />
                 </ProtectedRoute>
               } />
               
