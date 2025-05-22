@@ -3,7 +3,6 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Bell, ChevronDown, LogOut, User, Settings, Users, FileText, CreditCard, BarChart3 } from 'lucide-react';
 import { useAuth } from '../contexts/AuthContext';
-import Logo from './Logo';
 
 const Header: React.FC = () => {
   const { user, logout } = useAuth();
@@ -27,23 +26,29 @@ const Header: React.FC = () => {
   const isAdmin = user?.role === 'admin';
 
   return (
-    <header className="bg-white shadow-sm z-20">
+    <header className="bg-go3-primary shadow-sm z-20">
       <div className="container mx-auto px-4 py-3">
         <div className="flex justify-between items-center">
           {/* Logo and Menu */}
           <div className="flex items-center space-x-8">
-            <Logo size="md" />
+            <Link to={isAdmin ? "/admin/dashboard" : "/partner/dashboard"} className="h-10">
+              <img 
+                src="/lovable-uploads/71918e2a-f36f-4f46-bcbe-75f684625af6.png" 
+                alt="Go3AxePay" 
+                className="h-full" 
+              />
+            </Link>
             
             <nav className="hidden md:flex space-x-6">
-              <Link to={isAdmin ? "/admin/dashboard" : "/partner/dashboard"} className="font-medium text-go3-primary hover:text-go3-accent transition-colors">
+              <Link to={isAdmin ? "/admin/dashboard" : "/partner/dashboard"} className="font-medium text-white hover:text-go3-accent transition-colors">
                 Dashboard
               </Link>
               {isAdmin && (
-                <Link to="/admin/partners" className="font-medium text-go3-primary hover:text-go3-accent transition-colors">
+                <Link to="/admin/partners" className="font-medium text-white hover:text-go3-accent transition-colors">
                   Parceiros
                 </Link>
               )}
-              <Link to={isAdmin ? "/admin/transactions" : "/partner/transactions"} className="font-medium text-go3-primary hover:text-go3-accent transition-colors">
+              <Link to={isAdmin ? "/admin/transactions" : "/partner/transactions"} className="font-medium text-white hover:text-go3-accent transition-colors">
                 Transações
               </Link>
             </nav>
@@ -55,9 +60,9 @@ const Header: React.FC = () => {
             <div className="relative">
               <button
                 onClick={toggleNotifications}
-                className="p-2 rounded-full hover:bg-gray-100 transition-colors relative"
+                className="p-2 rounded-full hover:bg-go3-primary/80 transition-colors relative"
               >
-                <Bell size={20} className="text-go3-primary" />
+                <Bell size={20} className="text-white" />
                 <span className="absolute top-0 right-0 h-4 w-4 bg-go3-accent rounded-full flex items-center justify-center text-xs text-go3-primary font-medium">
                   2
                 </span>
@@ -92,12 +97,12 @@ const Header: React.FC = () => {
             <div className="relative">
               <button
                 onClick={toggleProfileMenu}
-                className="flex items-center space-x-1 p-2 rounded-full hover:bg-gray-100 transition-colors"
+                className="flex items-center space-x-1 p-2 rounded-full hover:bg-go3-primary/80 transition-colors"
               >
-                <div className="w-8 h-8 bg-go3-primary rounded-full flex items-center justify-center text-white">
+                <div className="w-8 h-8 bg-go3-accent rounded-full flex items-center justify-center text-go3-primary font-bold">
                   {user?.name?.[0] || 'U'}
                 </div>
-                <ChevronDown size={16} className="text-go3-primary" />
+                <ChevronDown size={16} className="text-white" />
               </button>
 
               {/* Dropdown menu */}

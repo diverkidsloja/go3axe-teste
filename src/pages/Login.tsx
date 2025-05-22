@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
@@ -57,7 +56,13 @@ const Login: React.FC = () => {
       <div className="w-full max-w-md bg-white rounded-xl shadow-xl overflow-hidden">
         <div className="p-8">
           <div className="text-center mb-8">
-            <Logo size="lg" className="mx-auto" />
+            <div className="flex justify-center">
+              <img 
+                src="/lovable-uploads/71918e2a-f36f-4f46-bcbe-75f684625af6.png" 
+                alt="Go3AxePay" 
+                className="h-12" 
+              />
+            </div>
             <h2 className="mt-4 text-xl font-semibold">Bem-vindo de volta</h2>
             <p className="mt-2 text-gray-500">Faça login para acessar sua conta</p>
           </div>
