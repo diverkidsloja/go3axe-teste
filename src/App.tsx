@@ -36,6 +36,7 @@ const ProtectedRoute = ({
   }
   
   if (allowedRoles.length > 0 && user && !allowedRoles.includes(user.role)) {
+    // Redirecionar para a dashboard apropriada com base na função do usuário
     return <Navigate to={user.role === 'admin' ? '/admin/dashboard' : '/partner/dashboard'} />;
   }
   
